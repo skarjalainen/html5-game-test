@@ -52,13 +52,19 @@ require(objectFiles, function () {
   var files = [
     '/images/tiles.png',
     '/maps/arena.json',
-    '/images/sprites.png',
-    '/images/sprites.json'
+    '/images/mage.png',
+    '/images/mage.json'
   ];
  
   Q.load(files.join(','), function () {
     Q.sheet('tiles', '/images/tiles.png', { tilew: 32, tileh: 32 });
-    Q.compileSheets('/images/sprites.png', '/images/sprites.json');
+    Q.compileSheets('/images/mage.png', '/images/mage.json');
+    Q.animations('player', {
+      run_right: { frames: [0,1], rate: 1/8 }, 
+      run_left: { frames: [2,3], rate: 1/8 },
+      stand_right: { frames: [0], rate: 1/8 },
+      stand_left: { frames: [2], rate: 1/8 }
+    });
     Q.stageScene('arena', 0);
   });
 });
